@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>젤다의 전설 작품별 해설</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body data-page="series">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="젤다의 전설 입문 해설">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>젤다의 전설 해설서</span>
+    </a>
+    <nav class="site-nav" aria-label="주요 문서">
+      <a href="index.html">입문</a>
+      <a href="timeline.html">연표</a>
+      <a href="series.html" aria-current="page">작품 해설</a>
+      <a href="wild.html">야숨·왕눈</a>
+    </nav>
+  </header>
+
+  <main class="wide-doc">
+    <article class="doc">
+      <header class="doc-hero reveal">
+        <p class="eyebrow">Series Notes</p>
+        <h1>작품별 해설과 그림자료</h1>
+        <p class="lead">
+          각 작품의 위치와 분위기를 짧게 정리했습니다. 그림은 공식 이미지를 복제하지 않고,
+          작품의 핵심 소재를 떠올릴 수 있도록 만든 상징형 자료입니다.
+        </p>
+      </header>
+
+      <section class="doc-section reveal">
+        <h2>흐름별로 읽기</h2>
+        <p>
+          전체 목록을 훑어도 좋고, 특정 연표 흐름만 골라 읽어도 좋습니다.
+          카드의 위쪽 그림은 작품의 정서를 빠르게 기억하기 위한 보조 자료입니다.
+        </p>
+        <div class="filter-bar" aria-label="작품 흐름 선택">
+          <button type="button" data-filter="all" class="is-active">전체</button>
+          <button type="button" data-filter="origin">공통 흐름</button>
+          <button type="button" data-filter="fallen">패배한 세계</button>
+          <button type="button" data-filter="child">어린 시절</button>
+          <button type="button" data-filter="adult">어른 시절</button>
+          <button type="button" data-filter="wild">야숨·왕눈</button>
+        </div>
+        <div class="series-grid" data-series-grid></div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>각 그림자료는 작품의 분위기를 설명하기 위한 직접 제작 상징 이미지입니다.</p>
+  </footer>
+</body>
+</html>
