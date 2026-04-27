@@ -329,6 +329,29 @@ body[data-page="series"] .doc-hero {
   animation-delay: 70ms;
 }
 
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.reveal-group.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 560ms ease, transform 560ms ease;
+}
+
+.reveal-group.is-visible > *:nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.reveal-group.is-visible > *:nth-child(3) {
+  transition-delay: 160ms;
+}
+
+.reveal-group.is-visible > *:nth-child(4) {
+  transition-delay: 240ms;
+}
+
 .concept-list {
   display: grid;
   gap: 12px;
@@ -685,13 +708,14 @@ body[data-page="series"] .doc-hero {
 .flow-chain {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 9px 28px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .flow-chain li {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 30px;
@@ -705,9 +729,14 @@ body[data-page="series"] .doc-hero {
 }
 
 .flow-chain li:not(:last-child)::after {
-  margin-left: 8px;
+  position: absolute;
+  top: 50%;
+  right: -21px;
   color: var(--gold);
   content: "→";
+  font-weight: 950;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .distant-connector {
