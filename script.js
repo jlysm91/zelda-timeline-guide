@@ -192,23 +192,35 @@ const series = [
   }
 ];
 
-const revealItems = document.querySelectorAll(".reveal");
+const revealItems = document.querySelectorAll(".reveal, .reveal-group");
+let revealObserver;
+
+function revealElement(element) {
+  element.classList.add("is-visible");
+}
+
+function observeRevealElement(element, index = 0) {
+  element.style.transitionDelay = `${Math.min(index * 24, 180)}ms`;
+  if (revealObserver) {
+    revealObserver.observe(element);
+  } else {
+    revealElement(element);
+  }
+}
+
 if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries) => {
+  revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
+        revealElement(entry.target);
+        revealObserver.unobserve(entry.target);
       }
     });
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0.02 });
 
-  revealItems.forEach((item, index) => {
-    item.style.transitionDelay = `${Math.min(index * 24, 180)}ms`;
-    observer.observe(item);
-  });
+  revealItems.forEach((item, index) => observeRevealElement(item, index));
 } else {
-  revealItems.forEach((item) => item.classList.add("is-visible"));
+  revealItems.forEach(revealElement);
 }
 
 function artSvg(type) {
@@ -306,7 +318,7 @@ function renderSeries() {
   if (!grid) return;
 
   grid.innerHTML = series.map((item) => `
-    <article class="series-card ${item.branch} reveal is-visible" data-branch="${item.branch}">
+    <article class="series-card ${item.branch} reveal" data-branch="${item.branch}">
       ${mediaMarkup(item.art, item.title)}
       <div class="series-info">
         <div class="series-meta">
@@ -321,7 +333,7 @@ function renderSeries() {
   `).join("");
 
   grid.querySelectorAll(".series-card").forEach((card, index) => {
-    card.style.transitionDelay = `${Math.min(index * 35, 280)}ms`;
+    observeRevealElement(card, index);
   });
 
   document.querySelectorAll("[data-filter]").forEach((button) => {
