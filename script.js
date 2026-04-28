@@ -48,7 +48,7 @@ const series = [
   },
   {
     title: "4개의 검",
-    year: "2002",
+    year: "2003",
     branch: "origin",
     art: "four",
     summary: "포 소드와 네 명의 링크",
